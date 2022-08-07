@@ -1,7 +1,3 @@
----@diagnostic disable: deprecated
-
-
-
 if game.PlaceId == 9498006165 then
 
     local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
@@ -126,4 +122,75 @@ if game.PlaceId == 9498006165 then
         print('Auto Rebirther V2->', state)
     end)
 
+elseif game.PlaceId == 3686253681 then
+
+    local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
+
+    local Window = Library.CreateLib("3RROR Hub - Planets Simulator", "BloodTheme")
+
+    -- Mass Farm
+
+    local Tab = Window:NewTab("Mass")
+
+    local FarmingSection = Tab:NewSection("Autofarm Mass")
+
+    FarmingSection:NewToggle("Auto Mass V1", "Autofarm your Mass (can get laggy)", function(state)
+        getgenv().AutoMass = state
+
+        spawn(function()
+            while AutoMass == true do 
+               local uhOh1 = "Mass"
+               local uhOh2 = 2.e+22
+               game:GetService("ReplicatedStorage").ChangePlayerStat:FireServer(uhOh1, uhOh2)
+               wait()
+            end
+        end)
+        print('Mass Farm V1 ->', state)
+    end)
+
+    FarmingSection:NewToggle("Auto Mass V2", "Autofarm your Mass (slower and less laggy)", function(state)
+        getgenv().AutoMass = state
+
+        spawn(function()
+            while AutoMass == true do 
+               local uhOh1 = "Mass"
+               local uhOh2 = 2.e+22
+               game:GetService("ReplicatedStorage").ChangePlayerStat:FireServer(uhOh1, uhOh2)
+               wait(0.2)
+            end
+        end)
+        print('Mass Farm V2 ->', state)
+    end)
+
+    -- Planets Farm
+
+    local Tab = Window:NewTab("Planets")
+
+    local PlanetsFarmingSection = Tab:NewSection("Autofarm Planets")
+
+    local PlanetsFarmingSection = Tab:NewSection("You can basically checkmark all Options.")
+
+    PlanetsFarmingSection:NewToggle("Farm the Sun", "basiaclly destroys the sun and gives you planet points", function(state)
+        getgenv().AutoDestroySun = state
+
+        spawn(function()
+            while AutoDestroySun == true do
+                local uhOh1 = workspace.World.Sun
+                local uhOh2 = -2.e+22
+                game:GetService("ReplicatedStorage").ChangePlanetMass:FireServer(uhOh1, uhOh2)
+                wait(5)
+            end
+        end)
+        print('Sun Farm ->', state)
+    end)
+
+    PlanetsFarmingSection:NewToggle("Farm the Planets wich are orbiting the Sun", "basiaclly destroys the Planets which are orbiting the sun and gives you planet points", function(state)
+        loadstring(game:HttpGet'https://raw.githubusercontent.com/sadge934/PlanetsOrbitingTheSun/main/SunOrbitPlanetsFarm.lua')();
+        print('Auto Farm Sun orbiting Planets ->', state)
+    end)
+
+    PlanetsFarmingSection:NewToggle("Farm the Planets wich are orbiting the Sun", "basiaclly destroys the Planets which are orbiting the sun and gives you planet points", function(state)
+        loadstring(game:HttpGet'https://raw.githubusercontent.com/sadge934/PlanetsOrbitingTheSun/main/AutoPlanetsRobloxiaCentauri.lua')();
+        print('Auto Farm Planets in the Robloxia Centauri ->', state)
+    end)
 end
