@@ -193,4 +193,34 @@ elseif game.PlaceId == 3686253681 then
         loadstring(game:HttpGet'https://raw.githubusercontent.com/sadge934/PlanetsOrbitingTheSun/main/AutoPlanetsRobloxiaCentauri.lua')();
         print('Auto Farm Planets in the Robloxia Centauri ->', state)
     end)
+
+    -- Auto Supernova
+    
+    local Tab = Window:NewTab("Planets")
+
+    local AutoSupernovaSection = Tab:NewSection("Auto go Supernova")
+
+    AutoSupernovaSection:NewToggle("Auto Supernova V1", "Auto do Supernova (more laggy but faster)", function(state)
+        getgenv().AutoGoSupernova = state
+
+        spawn(function()
+            while AutoGoSupernova == true do
+               game:GetService("ReplicatedStorage").GoSupernova:FireServer()
+               wait(7)
+            end
+        end)
+        print('Auto do Supernova ->', state)
+    end)
+
+    AutoSupernovaSection:NewToggle("Auto Supernova V2", "Auto do Supernova (slower and less laggy)", function(state)
+        getgenv().AutoGoSupernova = state
+
+        spawn(function()
+            while AutoGoSupernova == true do
+               game:GetService("ReplicatedStorage").GoSupernova:FireServer()
+               wait(15)
+            end
+        end)
+        print('Auto do Supernova ->', state)
+    end)
 end
